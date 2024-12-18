@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileDetails extends StatelessWidget {
@@ -8,7 +9,7 @@ class ProfileDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: const EdgeInsets.all(26),
+        padding: const EdgeInsets.symmetric(horizontal: 26),
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
@@ -28,17 +29,19 @@ class ProfileDetails extends StatelessWidget {
         child: Column(
           children: [
             AppBar(
-              leading: Container(
-                alignment: Alignment.center,
-                width: 35,
-                height: 35,
-                decoration: BoxDecoration(
-                    color: const Color(0xFF161926),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Image.asset(
-                  "assets/icons/arrow.png",
-                  width: 14,
-                  height: 14,
+              leading: Center(
+                child: Container(
+                  alignment: Alignment.center,
+                  width: 35,
+                  height: 35,
+                  decoration: BoxDecoration(
+                      color: const Color(0xFF161926),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Image.asset(
+                    "assets/icons/arrow.png",
+                    width: 14,
+                    height: 14,
+                  ),
                 ),
               ),
               backgroundColor: Colors.transparent,
@@ -73,10 +76,22 @@ class ProfileDetails extends StatelessWidget {
             ),
             Column(
               children: [
-                Image.asset(
-                  "assets/images/mask.png",
-                  width: 105,
-                  height: 105,
+                Stack(
+                  children: [
+                    Container(
+                      height: 105,
+                      width: 2.5,
+                      decoration: const BoxDecoration(
+                        color: Color(0xFF0085FF),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    Image.asset(
+                      "assets/images/mask.png",
+                      width: 105,
+                      height: 105,
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 16,
@@ -91,10 +106,10 @@ class ProfileDetails extends StatelessWidget {
                 const SizedBox(
                   height: 6,
                 ),
-                const Text(
+                Text(
                   "Tolibov Suxrobjon",
                   style: TextStyle(
-                      color: Colors.white,
+                      color: const Color(0xFFFFFFFF).withOpacity(0.5),
                       fontWeight: FontWeight.w400,
                       fontSize: 14),
                 )
@@ -116,6 +131,7 @@ class ProfileDetails extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
+                    padding: const EdgeInsets.all(6),
                     width: 34,
                     height: 34,
                     decoration: BoxDecoration(
@@ -133,17 +149,23 @@ class ProfileDetails extends StatelessWidget {
                   ),
                   Expanded(
                     child: TextField(
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         color: Colors.white,
                         fontWeight: FontWeight.w400,
                       ),
                       keyboardType: TextInputType.name,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.deny(
+                          RegExp("[0-9]"),
+                        ),
+                      ],
                       decoration: InputDecoration(
+                        border: InputBorder.none,
                         hintText: "Ism Familyangiz",
                         hintStyle: TextStyle(
-                          fontSize: 14,
-                          color: Colors.white,
+                          fontSize: 16,
+                          color: const Color(0xFFFFFFFF).withOpacity(0.5),
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -168,6 +190,7 @@ class ProfileDetails extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
+                    padding: const EdgeInsets.all(6),
                     width: 34,
                     height: 34,
                     decoration: BoxDecoration(
@@ -183,19 +206,23 @@ class ProfileDetails extends StatelessWidget {
                   const SizedBox(
                     width: 10,
                   ),
-                  const Expanded(
+                  Expanded(
                     child: TextField(
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         color: Colors.white,
                         fontWeight: FontWeight.w400,
                       ),
                       keyboardType: TextInputType.emailAddress,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.deny(RegExp("[0-9]"))
+                      ],
                       decoration: InputDecoration(
+                        border: InputBorder.none,
                         hintText: "namuna@gmail.com",
                         hintStyle: TextStyle(
-                          fontSize: 14,
-                          color: Colors.white,
+                          fontSize: 16,
+                          color: const Color(0xFFFFFFFF).withOpacity(0.5),
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -220,6 +247,7 @@ class ProfileDetails extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
+                    padding: const EdgeInsets.all(6),
                     width: 34,
                     height: 34,
                     decoration: BoxDecoration(
@@ -235,19 +263,23 @@ class ProfileDetails extends StatelessWidget {
                   const SizedBox(
                     width: 10,
                   ),
-                  const Expanded(
+                  Expanded(
                     child: TextField(
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         color: Colors.white,
                         fontWeight: FontWeight.w400,
                       ),
                       keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.allow(RegExp("[0-9]")),
+                      ],
                       decoration: InputDecoration(
+                        border: InputBorder.none,
                         hintText: "+998(XX)XXX-XX-XX",
                         hintStyle: TextStyle(
-                          fontSize: 14,
-                          color: Colors.white,
+                          fontSize: 16,
+                          color: const Color(0xFFFFFFFF).withOpacity(0.5),
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -272,6 +304,7 @@ class ProfileDetails extends StatelessWidget {
               child: Row(
                 children: [
                   Container(
+                    padding: const EdgeInsets.all(6),
                     width: 34,
                     height: 34,
                     decoration: BoxDecoration(
@@ -287,19 +320,23 @@ class ProfileDetails extends StatelessWidget {
                   const SizedBox(
                     width: 10,
                   ),
-                  const Expanded(
+                  Expanded(
                     child: TextField(
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         color: Colors.white,
                         fontWeight: FontWeight.w400,
                       ),
                       keyboardType: TextInputType.datetime,
+                      inputFormatters: <TextInputFormatter>[
+                        FilteringTextInputFormatter.allow(RegExp("[0-9]"))
+                      ],
                       decoration: InputDecoration(
+                        border: InputBorder.none,
                         hintText: "kk-oo-yyyy",
                         hintStyle: TextStyle(
-                          fontSize: 14,
-                          color: Colors.white,
+                          fontSize: 16,
+                          color: const Color(0xFFFFFFFF).withOpacity(0.5),
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -312,7 +349,7 @@ class ProfileDetails extends StatelessWidget {
               height: 16,
             ),
             Container(
-              width: 190,
+              width: 164,
               padding: const EdgeInsets.all(10),
               height: 34,
               decoration: BoxDecoration(
@@ -322,25 +359,18 @@ class ProfileDetails extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Container(
-                    width: 34,
-                    height: 34,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF1D2134),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: SvgPicture.asset(
-                      "assets/images/bin.svg",
-                      width: 18,
-                      height: 18,
-                    ),
+                  SvgPicture.asset(
+                    "assets/images/bin.svg",
+                    width: 18,
+                    height: 18,
                   ),
-                  const Text(
+                  const SizedBox(width: 3),
+                  Text(
                     "Akkauntni o'chirish",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: const Color(0xFFFFFFFF).withOpacity(0.5),
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
                     ),
