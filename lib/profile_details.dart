@@ -9,7 +9,11 @@ class ProfileDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 26),
+        padding: const EdgeInsets.only(
+          left: 26,
+          right: 26,
+          bottom: 26,
+        ),
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
@@ -48,7 +52,7 @@ class ProfileDetails extends StatelessWidget {
               elevation: 0,
               centerTitle: true,
               title: const Text(
-                "Profile",
+                "Profil",
                 style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
@@ -76,22 +80,58 @@ class ProfileDetails extends StatelessWidget {
             ),
             Column(
               children: [
-                Stack(
-                  children: [
-                    Container(
-                      height: 105,
-                      width: 2.5,
-                      decoration: const BoxDecoration(
-                        color: Color(0xFF0085FF),
-                        shape: BoxShape.circle,
+                SizedBox(
+                  width: 105,
+                  height: 105,
+                  child: Stack(
+                    //fit: StackFit.expand,
+                    children: [
+                      Container(
+                        clipBehavior: Clip.hardEdge,
+                        height: 105,
+                        width: 105,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF262938),
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            color: const Color(0xFF0085FF),
+                            width: 2.5,
+                          ),
+                        ),
                       ),
-                    ),
-                    Image.asset(
-                      "assets/images/mask.png",
-                      width: 105,
-                      height: 105,
-                    ),
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.all(2.5),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(100),
+                          child: Image.asset(
+                            "assets/images/mask.png",
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        right: 4,
+                        bottom: 4,
+                        child: Container(
+                          alignment: Alignment.center,
+                          width: 22,
+                          height: 22,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF0085FF),
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              width: 4,
+                              color: const Color(0xFF161926),
+                            ),
+                          ),
+                          child: const Icon(
+                            Icons.edit,
+                            size: 13,
+                            color: Colors.white,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 const SizedBox(
                   height: 16,
@@ -274,6 +314,7 @@ class ProfileDetails extends StatelessWidget {
                       inputFormatters: <TextInputFormatter>[
                         FilteringTextInputFormatter.allow(RegExp("[0-9]")),
                       ],
+                      // maxLength: 12,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: "+998(XX)XXX-XX-XX",
@@ -348,39 +389,43 @@ class ProfileDetails extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            Container(
-              width: 164,
-              padding: const EdgeInsets.all(10),
-              height: 34,
-              decoration: BoxDecoration(
-                color: const Color(
-                  0xFF1D2134,
-                ),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SvgPicture.asset(
-                    "assets/images/bin.svg",
-                    width: 18,
-                    height: 18,
-                  ),
-                  const SizedBox(width: 3),
-                  Text(
-                    "Akkauntni o'chirish",
-                    style: TextStyle(
-                      color: const Color(0xFFFFFFFF).withOpacity(0.5),
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
+            Row(
+              children: [
+                const Spacer(),
+                Container(
+                  width: 164,
+                  padding: const EdgeInsets.all(10),
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: const Color(
+                      0xFF1D2134,
                     ),
-                  )
-                ],
-              ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SvgPicture.asset(
+                        "assets/images/bin.svg",
+                        width: 18,
+                        height: 18,
+                      ),
+                      const SizedBox(width: 3),
+                      Text(
+                        "Akkauntni o'chirish",
+                        style: TextStyle(
+                          color: const Color(0xFFFFFFFF).withOpacity(0.5),
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 125,
-            ),
+            const Spacer(),
             SizedBox(
               width: double.infinity,
               height: 46,
@@ -396,7 +441,7 @@ class ProfileDetails extends StatelessWidget {
                       fontSize: 22,
                     ),
                   )),
-            )
+            ),
           ],
         ),
       ),

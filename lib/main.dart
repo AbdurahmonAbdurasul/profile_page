@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gradient/face.dart';
 import 'package:gradient/profile_details.dart';
 import 'package:gradient/profile_page.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:  ProfileDetails(),
+      home: ProfileDetails(),
     );
   }
 }
